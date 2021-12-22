@@ -1,7 +1,11 @@
-%DBML 
 
-% Enum pour les 'federation_mouvement_jeunesse' table below
-Enum "liste_fédération_mouvement_jeunesse" {
+Project "stic_b505 - projet" {
+  database_type: 'MySQL'
+  Note: 'projet de gestion de base de données, subv camp ONE'
+}
+
+// Enum pour les 'federation_mouvement_jeunesse' table below
+Enum "liste_federation_mouvement_jeunesse" {
   "Les Scouts"
   "Les Guides"
   "Les Patros"
@@ -9,135 +13,139 @@ Enum "liste_fédération_mouvement_jeunesse" {
   "Les Faucons Rouges"
 }
 
-%Enum pour les décisions concernant les demandes de subsides
-Enum "liste_décision"{
-  "Accordé"
-  "Partiellement accordé"
-  "Refusé"
+//Enum pour les decisions concernant les demandes de subsides
+Enum "liste_decision"{
+  "Accorde"
+  "Refuse"
 }
 
-% Creating tables
-Table "fédération_mouvement_jeunesse" {
+// Creating tables
+Table "federation_mouvement_jeunesse" {
   id int [pk, unique, not null]
-  "dénomination_fédération" "liste_fédération_mouvement_jeunesse"
+  "denomination_federation" "liste_federation_mouvement_jeunesse"
+  adresse int [ref: - a.id_adresse]
 }
 
 
 
-Table "unité" as U {
-  "numero" int [pk, increment, not null] % auto-increment
-  "fédération_mouvement_jeunesse" int
-  "dénomination_unité" varchar
-  rue varchar
-  numero_rue int
-  boite_rue int
-  code_postal int
-  commune varchar
+Table "unite" as U {
+  "numero" int [pk, increment, not null] // auto-increment
+  "federation_mouvement_jeunesse" int
+  "denomination_unite" varchar
+  adresse int [ref: - a.id_adresse]
 }
 
-Table "responsableUnité" {
-  "unité" int
+Table "responsable_unite" {
+  "unite" int
   niss int [pk, not null]
   nom varchar
-  "prénom" varchar
+  "prenom" varchar
+  adresse int [ref: - a.id_adresse]
   email varchar
-  "téléphone" varchar
+  "telephone" varchar
 }
 
 Table camp as c {
-  "numéro_dossier" int [pk, not null]
-  "numéro_unité" int 
-  "dénomination_camp" varchar
+  "numero_dossier" int [pk, not null]
+  "numero_unite" int 
+  "denomination_camp" varchar
   section varchar
-  "date_déclaration" timestamp
+  "date_declaration" timestamp
   frais_de_participation int
-  rue varchar
-  "numéro_rue" int
-  boite_rue int
-  code_postal int
-  commune varchar
-  "date_début" datetime
+  adresse int [ref: - a.id_adresse]
+  "date_debut" datetime
   date_fin datetime
   accueil_enfant_moins_6_ans boolean
   accueil_enfant_plus_6_ans boolean
-  %"accueil_enfant_besoin_spécifique" boolean
+  //"accueil_enfant_besoin_specifique" boolean
 }
+
+Table adresse as a {
+  id_adresse int [pk, not null, increment]
+  rue varchar
+  "numero_rue" int
+  //boite_rue int
+  code_postal int
+  commune varchar
+  }
+
 
 Table enfant {
   niss int [pk,  not null]
   nom varchar
-  "prénom" varchar
-  "age" int
+  "prenom" varchar
+  "date_naissance" datetime
 }
 
 Table encadrant {
   niss int [pk, not null]
   nom varchar
-  "prénom" varchar
-  "breveté" boolean
+  "prenom" varchar
+  "brevete" boolean
+  "experience" boolean
 }
 
 
-Table liste_enfant {
-  "numéro_dossier" int
+Table enfant_camp {
+  "numero_dossier" int
   "niss_enfant" int
-   "année" int
 }
 
-Table liste_encadrant {
-  "numéro_dossier" int
+Table encadrant_camp {
+  "numero_dossier" int
   "niss_encadrant" int
-  "année" int
 }
 
 
 Table demande_subside {
-  "numéro_dossier" int 
+  "numero_dossier" int 
   date_demande timestamp
   statut varchar
-  nombre_enfant_moins_6_ans int
-  nombre_enfants_plus_6_ans int
-  nombre_encadrant_sans_brevet int
-  "nombre_encadrants_brevetés" int
-  respect_norme_encadrement boolean
+ // nombre_enfant_moins_6_ans int
+ // nombre_enfants_plus_6_ans int
+ // nombre_encadrant_sans_brevet int
+ //"nombre_encadrants_brevetes" int
+ // respect_norme_encadrement boolean
 }
 
 
 
-Table "décision" {
-  "numéro_dossier" int
-  "décision" "liste_décision"
+Table "decision" {
+  "numero_dossier" int
+  "statut" "liste_decision"
   agent_traitant int
   montant_subside decimal
-  "motivation_décision" varchar
+  "motivation_decision" varchar
 }
 
 
 Table agentONE {
   niss int [pk, not null]
-  "prénom" varchar
+  "prenom" varchar
   nom varchar
   email varchar
-  "téléphone" varchar
+  "telephone" varchar
   attribution int
   
 }
 
 
-Ref: "unité"."numero" < "responsableUnité"."unité"
-Ref: "unité"."numero" < "camp"."numéro_unité"
+Ref: "unite"."numero" - "responsable_unite"."unite"
+Ref: "unite"."numero" > "camp"."numero_unite"
 
-Ref: "camp"."numéro_dossier" < "demande_subside"."numéro_dossier"
+Ref: "camp"."numero_dossier" - "demande_subside"."numero_dossier"
 
-Ref: "enfant"."niss" < "liste_enfant"."niss_enfant"
-Ref: "encadrant"."niss" < "liste_encadrant"."niss_encadrant"
+Ref: "enfant"."niss" < "enfant_camp"."niss_enfant"
+Ref: "encadrant"."niss" < "encadrant_camp"."niss_encadrant"
 
-Ref: "camp"."numéro_dossier" < "liste_enfant"."numéro_dossier"
-Ref: "camp"."numéro_dossier" < "liste_encadrant"."numéro_dossier"
+Ref: "camp"."numero_dossier" - "enfant_camp"."numero_dossier"
+Ref: "camp"."numero_dossier" - "encadrant_camp"."numero_dossier"
 
-Ref: "fédération_mouvement_jeunesse"."id" < "agentONE"."attribution"
-Ref: "fédération_mouvement_jeunesse"."id" < "unité"."fédération_mouvement_jeunesse"
+Ref: "federation_mouvement_jeunesse"."id" - "agentONE"."attribution"
+Ref: "federation_mouvement_jeunesse"."id" > "unite"."federation_mouvement_jeunesse"
 
-Ref: "demande_subside"."numéro_dossier" < "décision"."numéro_dossier"
+Ref: "demande_subside"."numero_dossier" - "decision"."numero_dossier"
 
-Ref: "agentONE"."niss" < "décision"."agent_traitant"
+Ref: "agentONE"."niss" - "decision"."agent_traitant"
+
+//Ref: "demande_subside"."respect_norme_encadrement" < "enfant"."age"

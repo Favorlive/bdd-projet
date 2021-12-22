@@ -1,20 +1,27 @@
-ALTER TABLE `responsableUnite` ADD FOREIGN KEY (`unite`) REFERENCES `unite` (`numero`);
+ALTER TABLE `federation_mouvement_jeunesse` ADD FOREIGN KEY (`adresse`) REFERENCES `adresse` (`id_adresse`);
 
-ALTER TABLE `camp` ADD FOREIGN KEY (`numero_unite`) REFERENCES `unite` (`numero`);
+ALTER TABLE `unite` ADD FOREIGN KEY (`adresse`) REFERENCES `adresse` (`id_adresse`);
+
+ALTER TABLE `responsable_unite` ADD FOREIGN KEY (`adresse`) REFERENCES `adresse` (`id_adresse`);
+
+ALTER TABLE `camp` ADD FOREIGN KEY (`adresse`) REFERENCES `adresse` (`id_adresse`);
+ALTER TABLE `responsable_unite` ADD FOREIGN KEY (`unite`) REFERENCES `unite` (`numero`);
+
+ALTER TABLE `unite` ADD FOREIGN KEY (`numero`) REFERENCES `camp` (`numero_unite`);
 
 ALTER TABLE `demande_subside` ADD FOREIGN KEY (`numero_dossier`) REFERENCES `camp` (`numero_dossier`);
 
-ALTER TABLE `liste_enfant` ADD FOREIGN KEY (`niss_enfant`) REFERENCES `enfant` (`niss`);
+ALTER TABLE `enfant_camp` ADD FOREIGN KEY (`niss_enfant`) REFERENCES `enfant` (`niss`);
 
-ALTER TABLE `liste_encadrant` ADD FOREIGN KEY (`niss_encadrant`) REFERENCES `encadrant` (`niss`);
+ALTER TABLE `encadrant_camp` ADD FOREIGN KEY (`niss_encadrant`) REFERENCES `encadrant` (`niss`);
 
-ALTER TABLE `liste_enfant` ADD FOREIGN KEY (`numero_dossier`) REFERENCES `camp` (`numero_dossier`);
+ALTER TABLE `enfant_camp` ADD FOREIGN KEY (`numero_dossier`) REFERENCES `camp` (`numero_dossier`);
 
-ALTER TABLE `liste_encadrant` ADD FOREIGN KEY (`numero_dossier`) REFERENCES `camp` (`numero_dossier`);
+ALTER TABLE `encadrant_camp` ADD FOREIGN KEY (`numero_dossier`) REFERENCES `camp` (`numero_dossier`);
 
 ALTER TABLE `agentONE` ADD FOREIGN KEY (`attribution`) REFERENCES `federation_mouvement_jeunesse` (`id`);
 
-ALTER TABLE `unite` ADD FOREIGN KEY (`federation_mouvement_jeunesse`) REFERENCES `federation_mouvement_jeunesse` (`id`);
+ALTER TABLE `federation_mouvement_jeunesse` ADD FOREIGN KEY (`id`) REFERENCES `unite` (`federation_mouvement_jeunesse`);
 
 ALTER TABLE `decision` ADD FOREIGN KEY (`numero_dossier`) REFERENCES `demande_subside` (`numero_dossier`);
 
