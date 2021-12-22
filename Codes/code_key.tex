@@ -1,0 +1,21 @@
+ALTER TABLE `unité` ADD FOREIGN KEY (`numero_agrément`) REFERENCES `responsableUnité` (`unité`);
+
+ALTER TABLE `camp` ADD FOREIGN KEY (`unité`) REFERENCES `unité` (`numero_agrément`);
+
+ALTER TABLE `camp` ADD FOREIGN KEY (`numéro_dossier`) REFERENCES `demande_subside` (`numéro_dossier`);
+
+ALTER TABLE `demande_subside` ADD FOREIGN KEY (`numéro_dossier`) REFERENCES `décision` (`numéro_dossier`);
+
+ALTER TABLE `camp` ADD FOREIGN KEY (`numéro_dossier`) REFERENCES `liste_enfant` (`numéro_dossier`);
+
+ALTER TABLE `enfant` ADD FOREIGN KEY (`niss`) REFERENCES `liste_enfant` (`niss_enfant`);
+
+ALTER TABLE `camp` ADD FOREIGN KEY (`numéro_dossier`) REFERENCES `liste_encadrant` (`numéro_dossier`);
+
+ALTER TABLE `encadrant` ADD FOREIGN KEY (`niss`) REFERENCES `liste_encadrant` (`niss_encadrant`);
+
+ALTER TABLE `fédération_mouvement_jeunesse` ADD FOREIGN KEY (`id`) REFERENCES `unité` (`fédération_mouvement_jeunesse`);
+
+ALTER TABLE `fédération_mouvement_jeunesse` ADD FOREIGN KEY (`id`) REFERENCES `agentONE` (`attribution`);
+
+ALTER TABLE `agentONE` ADD FOREIGN KEY (`niss`) REFERENCES `décision` (`agent_traitant`);

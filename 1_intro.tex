@@ -1,0 +1,149 @@
+\section{Domaine d'application}
+	Chaque année, les unités de cinq fédérations de mouvements de jeunesse organisent des camps pour les plus jeunes. Ces camps sont situés généralement dans des provinces reculées de Belgique, mais pas seulement. En effet, nous retrouvons également des camps à la côté, à l'étranger, etc. 
+	Ces unités sont agréés par l'Office de la Naissance et de l'Enfance. Dans ce cadre, ils peuvent demander des subsides pour chaque camp organisés qui respectent les normes d'encadrement en vigueur. Pour se faire, les unités doivent remplir les formalités administratives suivantes: 1/ déclarer le camp préalablement et 2/ introduire une demande de subsides. Ces démarches administratives sont remplies par les unités au moyen de formulaires envoyés à l'ONE. 
+
+
+\subsection{Fédération de mouvement de jeunesse}\label{fmj}
+En Belgique, les fédérations de mouvement de jeunesse sont: \begin{itemize}
+	    \item Les Scouts;
+	    \item Les Guides de Belgique;
+	    \item Les Patros;
+	    \item Les Guides et Scouts pluralistes;
+	    \item Les Faucons Rouges.
+	\end{itemize}
+Chaque unité est liée à une \textbf{seule fédération bien précise}. 
+
+
+\subsubsection{Une même adresse, pour plusieurs unités de différentes fédérations}
+Mais il n'est pas rare de retrouver plusieurs unités de différentes fédération à un endroit octroyé par la commune. Bien souvent, nous retrouvons une unité Guide avec une unité Scout dans les mêmes locaux communaux. Une même adresse peut donc être partagée par plusieurs unités.
+
+\subsubsection{Un gestionnaire de dossier ONE par fédération}
+Il y a un gestionnaire de dossier par fédération. Un même agent va traiter toutes les demandes de subsides qui émanent des unités Patros par exemple.
+
+
+
+\subsection{Unité de mouvement de jeunesse}
+Chaque unité est divisée en \textbf{section }qui accueille chacune enfant de tranche d'âge différent. Par exemple: chez les Guides, le section qui accueille les plus petits sont les nutons (5 - 6 ans), puis les lutins (7 - 11 ans), puis les guides aventures(11 - 15 ans), et enfin guide horizon (15-17 ans). 
+
+Les autres fédérations ont également une subdivision qui ressemble à celle des Guides pour leur unité. Les appellations diffèrent juste d'une fédération à l'autre, mais la logique d'accueil par tranche d'âge est identique. 
+
+\subsubsection{Un camp par section}
+Chaque section part en camp dans différents endroits; l'unité organise donc un ou plusieurs camps (une par section plus ou moins). Il peut arriver également qu'un même lieu de camp accueillent plusieurs sections, quelle que soit l'unité. 
+
+
+	
+\section{Le Projet}
+Le projet proposé dans ce travail est de développer une application qui transforme les formulaires papiers en formulaire à compléter en ligne. 
+
+
+\subsection{Explication du processus administratif}
+Le processus administratif actuel est le suivant: 
+\begin{enumerate}
+    \item L'unité envoie à l'ONE les formulaires de déclaration d'activité de ses différentes sections (avant le 30 avril de l'année).
+    \item L'administration centrale de l'ONE réceptionne les déclarations d'activités et les inventorie dans la base de données. 
+    \item Une fois toutes les déclarations encodées, les camps sont triés en fonction des provinces. L'administration centrale envoie ensuite à ses subrégions la liste des camps les concernant.
+    \item Les administrations subrégionales attribuent chaque camp à une coordinatrice accueil.
+    \item Une fois le camp passée, les sections remplissent les formulaires de demandes de subsides et les transmettent à l'unité. Après vérification, l'unité envoie les formulaires à l'ONE avant le 30 septembre.
+    \item L'ONE et l'agent traitant analyse la demande de subsides et vérifie les normes d'encadrement (voir point suivant \ref{subside_camp_explications}. Dans les fait, les agents proposent des décisions qui sont ensuite validé par l'Administrateur général de l'ONE. 
+    \item Une décision de subvention est prise par l'ONE et l'unité reçoit le paiement du subside.
+    \item La décision est envoyée au(x) Responsables d'unité. 
+\end{enumerate}
+
+
+\subsection{Subsides des camps: explications}\label{subside_camp_explications}
+Les camps peuvent prétendre à des subsides de la Communauté française. Ce subside est payé par l'ONE qui vérifie au préalable si les normes minimales d'encadrement sont respectées durant le camp. 
+
+\subsubsection{Normes d'encadrement (quantité)}
+Les normes d'encadrement sont décrits dans le décret centres de vacances de la Communauté française. Ces normes sont les suivantes: 
+
+\begin{itemize}
+    \item 1 animateur par groupe de 8 enfants de moins de 6 ans
+    \item 1 animateur par groupe de 12 enfants de plus de 6 ans.
+    
+    
+\end{itemize}
+
+\subsubsection{Normes d'encadrement (qualité)}
+Outre le nombre d'animateurs, il faut également respecter des normes de qualité de l'équipe d'encadrement: 1 animateur sur trois doit être porteur du brevet d'animateur centres de vacances. Le brevet est délivré par des organismes de formation agréé. 
+
+Le camp doit également être coordonnée par un responsable qualifié (un animateur porteur a minima du brevet d'animateur ayant une année d'expérience ou être porteur d'un brevet de coordinateur de centres de vacances).
+
+\subsubsection{Décision de la demande de subsides}
+La demande de subside peut faire l'objet de plusieurs décisions de la part de l'administration: 
+
+\begin{itemize}
+    \item Soit la décision est favorable car les critères d'encadrement et de qualité de l'animation sont remplies,
+    \item soit favorable partiellement car le critère d'encadrement n'est pas tout à fait respecté mais la qualité d'animation rattrape la lacune,
+    \item soit défavorable car les normes d'encadrement ne sont pas du tout respectées. 
+\end{itemize}
+
+
+
+%\subsection{Informatisation du processus de déclaration et de demandes de subsides des camps}
+%Le Projet consistera à traduire ce processus administratif de déclaration et demande de subsides pour les camps. Voici les spécificités à prendre en compte pour ce projet:
+%\begin{itemize}
+ %   \item Les différentes fédérations de mouvement de jeunesse; chaque unité dépends d'une fédération de mouvement de jeunesse. Cette dernière centralise également la gestion logistique et administratives des camps de ses membres. Mais elle ne gère pas les demandes de subventions de ses unités. 
+  %  \item La structure unité, section; en effet, l'ONE donne l'agrément à la fédération. Les unités et les sections reçoivent par héritage l'agrément (pour pouvoir prétendre aux subsides), mais c'est bien l'unité qui est reconnu comme pouvoir organisateur (et non pas la section). Il est donc logique que ce soit l'unité qui reçoive les rapports de visite et les subventions de ses sections.
+   % \item L'aspect d'administration centrale et régionale propre à l'ONE; la centrale réceptionne et traite les formulaires, mais les visites d'accompagnement de terrain sont confiées aux subrégions.  
+    
+% (partie supprimée suite à réunion d'accompagnement)   \item Les visites d'accompagnement; vu la quantité très importante d'activité de camp, il est impossible de faire une visite systématique. Ainsi, chaque unité voit l'un de ses camps visités au moins une fois tous les trois/quatre ans. Il y a donc un historique des visites effectués. 
+%\end{itemize}	
+	
+
+%\section{Identification des utilisateurs cibles du système}
+
+%\subsection{L'Office de la Naissance et de l'Enfance (ONE)}
+
+%\subsubsection{Décision concernant la demande de subsides}
+
+
+
+
+
+\section{Utilisation du Projet}
+\subsection{Explications}
+Considérant le processus et les spécificités décrite supra, nous allons concevoir une application qui reprend tous les champs des divers formulaires. 
+
+
+
+%\subsubsection{Vue sur les camps:} la base de données ainsi constituée servira à lister les camps par province en vue d'une visite de terrain par les subrégions; pour faciliter également l'organisation des visites, nous allons mettre en relation les unités qui n'ont pas été visités dans les quatre dernière année. Une unité rentrera donc dans la catégorie "visite prioritaire" dans le cas où aucune de ses sections n'a été visité dans les quatre années passées. 
+
+%   supprimé suite à réunion d'accompagnement 
+%\subsubsection{Assignation des camps à une coordinatrice} 
+%Nous prévoirons également une assignation à une coordinatrice en particulier (assignation automatique ou manuelle). Cela permettra à une coordinatrice accueil de lister les camps qu'elle doit visiter et les camps prioritaires. Une case visite effectuée sera ajoutée afin d'encoder la visite. Et différent champs permettront de renseigner le résultat de la visite. 
+
+
+\subsection{Utilisateurs cibles de l'application}
+
+\subsubsection{Le responsable d'Unité} Il réceptionne tous les courriers officiels et gère l'aspect administratif. C'est cette personne qui déclare et qui réalise les demandes de subsides sur la plateforme. Elle reçoit également les notifications de décision concernant les demandes de subsides. 
+
+%partie supprimé suite à visite d'accompagnement
+%\subsubsection{La Coordinatrice accueil} reçoit quelques camps dans ses attributions pour effectuer des visites de terrain. Elle rédige un rapport de visite qu'elle transmet au Responsable d'unité, mais également à l'agent traitant. 
+
+\subsubsection{L'Agent traitant ONE}
+
+L'agent analyse et traite les demandes de subsides rentrées. Il y a un agent ONE qui s'occupe des dossiers d'une fédérations précise. Il y a donc 5 agents traitant. 
+
+\subsection{Cas d'utilisation de la plateforme}
+
+\subsubsection{Création et modification des unités}
+
+
+
+\subsubsection{Mise à jour du Responsable d'unité}
+
+\subsubsection{Déclaration des camps}
+Un des écrans sera destiné à la déclaration d"activité qui servira à récolter les données des unités. Les données renseignées permettront de réaliser le traitement des normes d'encadrement. Dans cette optique, nous devrons donc identifier le catégorie d'âge pour calculer le nombre nécessaire d'encadrants
+
+\subsubsection{Demande de subsides des camps déclarés}
+Un autre écran permettra de compléter et d'envoyer la demande de subsides.
+
+
+\subsubsection{Décision de subsides (par l'ONE)}
+Un champs de décision de subsides sera également présent. Plusieurs items constitueront la partie décision (justification, sommes de subsides, raison du refus, etc.)
+
+
+
+
+
+

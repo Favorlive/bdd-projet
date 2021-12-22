@@ -1,0 +1,104 @@
+CREATE TABLE `fédération_mouvement_jeunesse` (
+  `id` int PRIMARY KEY,
+  `dénomination_fédération` ENUM ('Les Scouts', 
+                                'Les Guides', 
+                                'Les Patros', 
+                                'Les Scouts et Guides pluralistes', 
+                                'Les Faucons Rouges')
+);
+
+CREATE TABLE `unité` (
+  `numero_agrément` int PRIMARY KEY AUTO_INCREMENT,
+  `fédération_mouvement_jeunesse` int,
+  `dénomination_unité` varchar(255),
+  `rue` varchar(255),
+  `numero_rue` int,
+  `boite_rue` int,
+  `code_postal` int,
+  `commune` varchar(255)
+);
+
+CREATE TABLE `responsableUnité` (
+  `unité` int,
+  `niss` int PRIMARY KEY,
+  `nom` varchar(255),
+  `prénom` varchar(255),
+  `email` varchar(255),
+  `téléphone` varchar(255)
+);
+
+CREATE TABLE `camp` (
+  `numéro_dossier` int PRIMARY KEY,
+  `unité` int,
+  `dénomination_camp` varchar(255),
+  `section` varchar(255),
+  `date_déclaration` timestamp,
+  `frais_de_participation` int,
+  `rue` varchar(255),
+  `numéro_rue` int,
+  `boite_rue` int,
+  `code_postal` int,
+  `commune` varchar(255),
+  `date_début` datetime,
+  `date_fin` datetime,
+  `accueil_enfant_moins_6_ans` boolean,
+  `accueil_enfant_plus_6_ans` boolean
+  CHECK (date_début < date_fin)
+  CHECK (frais_de_participation >= 0)
+);
+
+CREATE TABLE `enfant` (
+  `niss` int PRIMARY KEY,
+  `nom` varchar(255),
+  `prénom` varchar(255),
+  `age` int
+  CHECK (age < 16)
+);
+
+CREATE TABLE `encadrant` (
+  `niss` int PRIMARY KEY,
+  `nom` varchar(255),
+  `prénom` varchar(255),
+  `breveté` boolean
+  CHECK (age >= 16)
+);
+
+CREATE TABLE `liste_enfant` (
+  `numéro_dossier` int,
+  `niss_enfant` int
+);
+
+CREATE TABLE `liste_encadrant` (
+  `numéro_dossier` int,
+  `niss_encadrant` int
+);
+
+CREATE TABLE `demande_subside` (
+  `numéro_dossier` int,
+  `date_demande` timestamp,
+  `statut` varchar(255),
+  `nombre_enfant_moins_6_ans` int,
+  `nombre_enfants_plus_6_ans` int,
+  `nombre_encadrant_sans_brevet` int,
+  `nombre_encadrants_brevetés` int,
+  `respect_norme_encadrement` boolean
+);
+
+CREATE TABLE `décision` (
+  `numéro_dossier` int,
+  `décision` ENUM ('Accordé', 'Partiellement accordé', 'Refusé'),
+  `agent_traitant` int,
+  `montant_subside` decimal,
+  `motivation_décision` varchar(255)
+);
+
+CREATE TABLE `agentONE` (
+  `niss` int PRIMARY KEY,
+  `prénom` varchar(255),
+  `nom` varchar(255),
+  `email` varchar(255),
+  `téléphone` varchar(255),
+  `attribution` int
+);
+
+

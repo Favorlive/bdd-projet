@@ -1,0 +1,52 @@
+\documentclass{ULBreport}
+\usepackage{comment}
+\usepackage{fontspec}
+\setmainfont{Arial} 
+
+\sceau{Pictures/sceauULB.jpg}
+
+\addbibresource{biblio.bib}
+
+\begin{document}
+
+\titleULB{
+	title={Application: déclaration et demande de subsides des camps de mouvement de jeunesse auprès de l'Office de la Naissance et de l'Enfance (ONE)},
+	studies={2021-2022},
+	course={STIC-B505 - Conception et gestion de banques de données},
+	author={David MANFROY\\Selim BEN ISMAIL},
+	date={Année académique 2021-2022},
+	teacher={Frédéric SERVAIS\\Manon LEGRAND},
+	logo={Pictures/logo_mastic_long_petit.png},
+	manyAuthor
+}
+
+%----- Introduction  ---------
+\chapter{Introduction}
+\input{1_intro}
+
+
+%----- Schéma Entité-Relation ---------
+\chapter{Schéma conceptuel (entité-association)}
+\input{2_entite-association}
+
+%---- Schéma Schéma logique relationnel -------
+\chapter{Schéma Logique Relationnel}
+\input{3_logique-relationnel}
+
+%---- Code de création de la base de données -----
+\chapter{Code de création de la base de données}
+\input{4_script-sql-ddl}
+
+
+
+%---- Application-web ------
+\chapter{Application-web}
+\input{5_application-web}
+
+
+
+%Bibliography
+%\nocite{*}
+%\printbibliography[type=article,title=Articles]
+
+\end{document}
