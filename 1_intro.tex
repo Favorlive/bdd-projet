@@ -102,7 +102,7 @@ La demande de subside peut faire l'objet de plusieurs décisions de la part de l
 
 \section{Utilisation du Projet}
 \subsection{Explications}
-Considérant le processus et les spécificités décrite supra, nous allons concevoir une application qui reprend tous les champs des divers formulaires. 
+Considérant le processus et les spécificités décrite supra, nous allons concevoir une application qui reprend la plupart des champs des divers formulaires de déclaration d'activité et de demande de subsides\footnote{Ces formulaires sont disponibles sur le site \url{http://www.centres-de-vacances.be} de l'ONE}. 
 
 
 
@@ -121,19 +121,24 @@ Considérant le processus et les spécificités décrite supra, nous allons conc
 %\subsubsection{La Coordinatrice accueil} reçoit quelques camps dans ses attributions pour effectuer des visites de terrain. Elle rédige un rapport de visite qu'elle transmet au Responsable d'unité, mais également à l'agent traitant. 
 
 \subsubsection{L'Agent traitant ONE}
-
 L'agent analyse et traite les demandes de subsides rentrées. Il y a un agent ONE qui s'occupe des dossiers d'une fédérations précise. Il y a donc 5 agents traitant. 
 
 \subsection{Cas d'utilisation de la plateforme}
 
 \subsubsection{Création et modification des unités}
+L'application doit permettre de créer les unités de mouvement de jeunesse et de les relier à une fédération de mouvement de jeunesse. Les ajouts de ces données sont uniquement réalisés par l'ONE qui vérifie si ces unités existent et si elles sont agréées pour organiser des camps. 
 
+Dans le cadre de ce projet, Cette partie de l'application se fera via l'application phpMyAdmin. 
 
 
 \subsubsection{Mise à jour du Responsable d'unité}
+L'application permettra de mettre à jour le responsable d'unité. Un bouton dédié à la mise à jour de l'identité, des coordonnées de contact. 
+
+
 
 \subsubsection{Déclaration des camps}
-Un des écrans sera destiné à la déclaration d"activité qui servira à récolter les données des unités. Les données renseignées permettront de réaliser le traitement des normes d'encadrement. Dans cette optique, nous devrons donc identifier le catégorie d'âge pour calculer le nombre nécessaire d'encadrants
+Un des écrans sera destiné à la déclaration d"activité qui servira à récolter les données de camp. Les données renseignées permettront de réaliser le traitement des normes d'encadrement. 
+La déclaration permettra d'ajouter les enfants et les encadrants pour chaque camp. 
 
 \subsubsection{Demande de subsides des camps déclarés}
 Un autre écran permettra de compléter et d'envoyer la demande de subsides.
