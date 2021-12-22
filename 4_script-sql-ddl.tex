@@ -1,12 +1,14 @@
 \section{Script SQL (DDL) de création de la base de données}
 \subsection{Création des tables: explications}
-Le code infra permet de créer les tables et leurs attributs respectifs. Pour chaque table, les clefs primaires et étrangères ont été établies. Certaines contraintes ont été rejetées par PhpMyAdmin (erreur \#1005), mais pourront être géré via le code php.
+Le code infra permet de créer les tables et leurs attributs respectifs. Pour chaque table, les clefs primaires et étrangères ont été établies. Certaines contraintes ont été rejetées par PhpMyAdmin, mais pourront être gérées via le code php.
 
 \subsection{Code de création des tables}
 \inputminted[breaklines =true, autogobble, linenos, frame = single]{sql}{Codes/code_creation.tex}
 
 \subsection{Code de création des clés étrangères}
 \inputminted[breaklines =true, autogobble, linenos, frame = single]{sql}{Codes/code_key.tex}
+
+Le résultat de ce script dans phpMyAdmin:voir figure \ref{fig:pmy_creation_fk}.
 
 
 \section{Élément de SQL avancés}
