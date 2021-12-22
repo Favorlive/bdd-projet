@@ -1,0 +1,143 @@
+%DBML 
+
+% Enum pour les 'federation_mouvement_jeunesse' table below
+Enum "liste_fédération_mouvement_jeunesse" {
+  "Les Scouts"
+  "Les Guides"
+  "Les Patros"
+  "Les Scouts et Guides pluralistes"
+  "Les Faucons Rouges"
+}
+
+%Enum pour les décisions concernant les demandes de subsides
+Enum "liste_décision"{
+  "Accordé"
+  "Partiellement accordé"
+  "Refusé"
+}
+
+% Creating tables
+Table "fédération_mouvement_jeunesse" {
+  id int [pk, unique, not null]
+  "dénomination_fédération" "liste_fédération_mouvement_jeunesse"
+}
+
+
+
+Table "unité" as U {
+  "numero" int [pk, increment, not null] % auto-increment
+  "fédération_mouvement_jeunesse" int
+  "dénomination_unité" varchar
+  rue varchar
+  numero_rue int
+  boite_rue int
+  code_postal int
+  commune varchar
+}
+
+Table "responsableUnité" {
+  "unité" int
+  niss int [pk, not null]
+  nom varchar
+  "prénom" varchar
+  email varchar
+  "téléphone" varchar
+}
+
+Table camp as c {
+  "numéro_dossier" int [pk, not null]
+  "numéro_unité" int 
+  "dénomination_camp" varchar
+  section varchar
+  "date_déclaration" timestamp
+  frais_de_participation int
+  rue varchar
+  "numéro_rue" int
+  boite_rue int
+  code_postal int
+  commune varchar
+  "date_début" datetime
+  date_fin datetime
+  accueil_enfant_moins_6_ans boolean
+  accueil_enfant_plus_6_ans boolean
+  %"accueil_enfant_besoin_spécifique" boolean
+}
+
+Table enfant {
+  niss int [pk,  not null]
+  nom varchar
+  "prénom" varchar
+  "age" int
+}
+
+Table encadrant {
+  niss int [pk, not null]
+  nom varchar
+  "prénom" varchar
+  "breveté" boolean
+}
+
+
+Table liste_enfant {
+  "numéro_dossier" int
+  "niss_enfant" int
+   "année" int
+}
+
+Table liste_encadrant {
+  "numéro_dossier" int
+  "niss_encadrant" int
+  "année" int
+}
+
+
+Table demande_subside {
+  "numéro_dossier" int 
+  date_demande timestamp
+  statut varchar
+  nombre_enfant_moins_6_ans int
+  nombre_enfants_plus_6_ans int
+  nombre_encadrant_sans_brevet int
+  "nombre_encadrants_brevetés" int
+  respect_norme_encadrement boolean
+}
+
+
+
+Table "décision" {
+  "numéro_dossier" int
+  "décision" "liste_décision"
+  agent_traitant int
+  montant_subside decimal
+  "motivation_décision" varchar
+}
+
+
+Table agentONE {
+  niss int [pk, not null]
+  "prénom" varchar
+  nom varchar
+  email varchar
+  "téléphone" varchar
+  attribution int
+  
+}
+
+
+Ref: "unité"."numero" < "responsableUnité"."unité"
+Ref: "unité"."numero" < "camp"."numéro_unité"
+
+Ref: "camp"."numéro_dossier" < "demande_subside"."numéro_dossier"
+
+Ref: "enfant"."niss" < "liste_enfant"."niss_enfant"
+Ref: "encadrant"."niss" < "liste_encadrant"."niss_encadrant"
+
+Ref: "camp"."numéro_dossier" < "liste_enfant"."numéro_dossier"
+Ref: "camp"."numéro_dossier" < "liste_encadrant"."numéro_dossier"
+
+Ref: "fédération_mouvement_jeunesse"."id" < "agentONE"."attribution"
+Ref: "fédération_mouvement_jeunesse"."id" < "unité"."fédération_mouvement_jeunesse"
+
+Ref: "demande_subside"."numéro_dossier" < "décision"."numéro_dossier"
+
+Ref: "agentONE"."niss" < "décision"."agent_traitant"
