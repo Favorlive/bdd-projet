@@ -1,0 +1,15 @@
+
+
+SELECT 
+	numero, 
+    denomination_unite,
+    federation_mouvement_jeunesse.denomination_federation,
+    adresse.rue, 
+    adresse.numero_rue,
+    adresse.code_postal,
+    adresse.commune
+    
+FROM `unite` 
+
+inner join adresse on unite.adresse = id_adresse
+inner join federation_mouvement_jeunesse on unite.federation_mouvement_jeunesse = id

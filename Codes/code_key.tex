@@ -6,13 +6,13 @@ ALTER TABLE `unite` ADD FOREIGN KEY (`adresse`) REFERENCES `adresse` (`id_adress
 
 ALTER TABLE `responsable_unite` ADD FOREIGN KEY (`adresse`) REFERENCES `adresse` (`id_adresse`);
 
-ALTER TABLE `camp` ADD FOREIGN KEY (`numero_unite`) REFERENCES `unite` (`numero`);
+ALTER TABLE `camp` ADD FOREIGN KEY (`numero_unite`) REFERENCES `unite` (`numero_agrement`);
 
 ALTER TABLE `camp` ADD FOREIGN KEY (`adresse`) REFERENCES `adresse` (`id_adresse`);
 
 ALTER TABLE `agentONE` ADD FOREIGN KEY (`attribution`) REFERENCES `federation_mouvement_jeunesse` (`id`);
 
-ALTER TABLE `responsable_unite` ADD FOREIGN KEY (`unite`) REFERENCES `unite` (`numero`);
+ALTER TABLE `responsable_unite` ADD FOREIGN KEY (`unite`) REFERENCES `unite` (`numero_agrement`);
 
 ALTER TABLE `demande_subside` ADD FOREIGN KEY (`numero_dossier`) REFERENCES `camp` (`numero_dossier`);
 

@@ -1,0 +1,26 @@
+INSERT INTO tp_subside_one.federation_mouvement_jeunesse (id,denomination_federation)
+	VALUES (1,'Les Scouts');
+INSERT INTO tp_subside_one.federation_mouvement_jeunesse (id,denomination_federation)
+	VALUES (2,'Les Guides');
+INSERT INTO tp_subside_one.federation_mouvement_jeunesse (id,denomination_federation)
+	VALUES (3,'Les Patros');
+INSERT INTO tp_subside_one.federation_mouvement_jeunesse (id,denomination_federation)
+	VALUES (4,'Les Scouts et Guides pluralistes');
+INSERT INTO tp_subside_one.federation_mouvement_jeunesse (id,denomination_federation)
+	VALUES (5,'Les Faucons Rouges');
+	
+	
+INSERT INTO adresse (id_adresse,rue,numero_rue,code_postal,commune) VALUES ('1','Rue de Dublin','21','1050','Ixelles');
+INSERT INTO adresse (id_adresse,rue,numero_rue,code_postal,commune) VALUES ('2','Rue Paul Emile Janson','35','1050','Ixelles');
+INSERT INTO adresse (id_adresse,rue,numero_rue,code_postal,commune) VALUES ('3','Rue de l'Hopital','15','6060','Charleroi');
+INSERT INTO adresse (id_adresse,rue,numero_rue,code_postal,commune) VALUES ('4','Avenue de la Porte de Hal','39','1060','Bruxelles');
+INSERT INTO adresse (id_adresse,rue,numero_rue,code_postal,commune) VALUES ('5','Rue du Marché ','45','4500','Huy');
+
+UPDATE `federation_mouvement_jeunesse` SET `adresse` = '1' WHERE `federation_mouvement_jeunesse`.`id` = 1; 
+
+UPDATE `federation_mouvement_jeunesse` SET `adresse` = '2' WHERE `federation_mouvement_jeunesse`.`id` = 2; 
+
+UPDATE `federation_mouvement_jeunesse` SET `adresse` = '3' WHERE `federation_mouvement_jeunesse`.`id` = 3;
+UPDATE `federation_mouvement_jeunesse` SET `adresse` = '4' WHERE `federation_mouvement_jeunesse`.`id` = 4; 
+
+UPDATE `federation_mouvement_jeunesse` SET `adresse` = '5' WHERE `federation_mouvement_jeunesse`.`id` = 5; 

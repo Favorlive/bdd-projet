@@ -21,16 +21,16 @@ Enum "liste_decision"{
 
 // Creating tables
 Table "federation_mouvement_jeunesse" {
-  id int [pk, unique, not null]
+  id int [pk, not null]
   "denomination_federation" "liste_federation_mouvement_jeunesse"
   adresse int [ref: - a.id_adresse]
 }
 
 
 
-Table "unite" as U {
-  "numero" int [pk, increment, not null] // auto-increment
-  "federation_mouvement_jeunesse" int
+Table "unite" as u {
+  "numero_agrement" int [pk, increment, not null] // auto-increment
+  "federation_mouvement_jeunesse" int [ref: > "federation_mouvement_jeunesse"."id"]
   "denomination_unite" varchar
   adresse int [ref: - a.id_adresse]
 }
@@ -47,7 +47,7 @@ Table "responsable_unite" {
 
 Table camp as c {
   "numero_dossier" int [pk, not null]
-  "numero_unite" int 
+  "numero_unite" int [ref: > u.numero_agrement]
   "denomination_camp" varchar
   section varchar
   "date_declaration" timestamp
@@ -60,13 +60,14 @@ Table camp as c {
   //"accueil_enfant_besoin_specifique" boolean
 }
 
+
 Table adresse as a {
   id_adresse int [pk, not null, increment]
-  rue varchar
-  "numero_rue" int
+  rue varchar [not null]
+  "numero_rue" int [not null]
   //boite_rue int
-  code_postal int
-  commune varchar
+  code_postal int [not null]
+  commune varchar [not null]
   }
 
 
@@ -125,13 +126,12 @@ Table agentONE {
   nom varchar
   email varchar
   "telephone" varchar
-  attribution int
+  attribution int [ref: - federation_mouvement_jeunesse.id]
   
 }
 
 
-Ref: "unite"."numero" - "responsable_unite"."unite"
-Ref: "unite"."numero" > "camp"."numero_unite"
+Ref: "unite"."numero_agrement" - "responsable_unite"."unite"
 
 Ref: "camp"."numero_dossier" - "demande_subside"."numero_dossier"
 
@@ -141,8 +141,6 @@ Ref: "encadrant"."niss" < "encadrant_camp"."niss_encadrant"
 Ref: "camp"."numero_dossier" - "enfant_camp"."numero_dossier"
 Ref: "camp"."numero_dossier" - "encadrant_camp"."numero_dossier"
 
-Ref: "federation_mouvement_jeunesse"."id" - "agentONE"."attribution"
-Ref: "federation_mouvement_jeunesse"."id" > "unite"."federation_mouvement_jeunesse"
 
 Ref: "demande_subside"."numero_dossier" - "decision"."numero_dossier"
 

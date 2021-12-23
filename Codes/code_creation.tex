@@ -1,11 +1,11 @@
 CREATE TABLE `federation_mouvement_jeunesse` (
-  `id` int UNIQUE PRIMARY KEY NOT NULL,
+  `id` int PRIMARY KEY NOT NULL,
   `denomination_federation` ENUM ('Les Scouts', 'Les Guides', 'Les Patros', 'Les Scouts et Guides pluralistes', 'Les Faucons Rouges'),
   `adresse` int
 );
 
 CREATE TABLE `unite` (
-  `numero` int PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  `numero_agrement` int PRIMARY KEY NOT NULL AUTO_INCREMENT,
   `federation_mouvement_jeunesse` int,
   `denomination_unite` varchar(255),
   `adresse` int
