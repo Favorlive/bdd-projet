@@ -1,0 +1,19 @@
+CREATE USER 'utilisateur'@'%localhost';
+ALTER USER 'utilisateur'@'%localhost'
+WITH
+	MAX_USER_CONNECTIONS 200
+	MAX_QUERIES_PER_HOUR 120
+	MAX_UPDATES_PER_HOUR 150
+	MAX_CONNECTIONS_PER_HOUR 200;
+GRANT Create user ON *.* TO 'utilisateur'@'%localhost';
+GRANT Event ON *.* TO 'utilisateur'@'%localhost';
+GRANT File ON *.* TO 'utilisateur'@'%localhost';
+GRANT Process ON *.* TO 'utilisateur'@'%localhost';
+GRANT Reload ON *.* TO 'utilisateur'@'%localhost';
+GRANT Replication client ON *.* TO 'utilisateur'@'%localhost';
+GRANT Replication slave ON *.* TO 'utilisateur'@'%localhost';
+GRANT Show databases ON *.* TO 'utilisateur'@'%localhost';
+GRANT Shutdown ON *.* TO 'utilisateur'@'%localhost';
+GRANT Super ON *.* TO 'utilisateur'@'%localhost';
+GRANT Create tablespace ON *.* TO 'utilisateur'@'%localhost';
+GRANT Usage ON *.* TO 'utilisateur'@'%localhost';
